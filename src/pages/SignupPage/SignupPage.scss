@@ -1,0 +1,13 @@
+.loginform {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__input {
+    height: 1.25rem;
+  }
+
+  &__button {
+    padding: 0.375rem;
+  }
+}
