@@ -1,10 +1,25 @@
+import Bookings from "../Bookings/Bookings";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ date, setDate, guestCount, setGuestCount }) {
   return (
-    <header>
-      <Link to="/login">
+    <header className="header">
+      <img
+        src="/src/assets/logo/hotel-logo.jpg"
+        alt="Logo"
+        className="header__logo"
+      ></img>
+      <nav className="header__nav">
+        <p className="nav__rooms">Rooms</p>
+        <Bookings
+          date={date}
+          setDate={setDate}
+          guestCount={guestCount}
+          setGuestCount={setGuestCount}
+        />
+      </nav>
+      {/* <Link to="/login">
         <div className="login">
           <svg
             viewBox="0 0 16 16"
@@ -17,7 +32,7 @@ function Header() {
             />
           </svg>
         </div>
-      </Link>
+      </Link> */}
     </header>
   );
 }

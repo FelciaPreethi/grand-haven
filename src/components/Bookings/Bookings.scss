@@ -1,0 +1,65 @@
+.overlay {
+  position: fixed;
+  top: -12rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  align-self: flex-end;
+}
+
+.bookings {
+  &__modal {
+    padding: 1rem;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+
+  &-input {
+    background-color: rgb(219, 224, 234);
+    padding: 0.25rem;
+
+    &__title {
+      font-size: 0.9375rem;
+    }
+
+    &__guests {
+      width: 2.5rem;
+      height: 1.5rem;
+    }
+
+    &__button {
+      width: 2rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__button {
+    &-item {
+      background-color: rgb(219, 224, 234);
+      padding: 0.5rem;
+      text-align: center;
+      border: 0.0625rem solid black;
+
+      &:hover,
+      &:active {
+        background-color: rgb(24, 66, 103);
+        color: white;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+  }
+}

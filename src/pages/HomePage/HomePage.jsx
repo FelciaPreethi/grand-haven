@@ -1,12 +1,7 @@
 import "./HomePage.scss";
-import Header from "../../components/Header/Header";
 
-function HomePage() {
-  return (
-    <>
-      <Header />
-    </>
-  );
+function HomePage({}) {
+  return <></>;
 }
 
-export default Header;
+export default HomePage;
