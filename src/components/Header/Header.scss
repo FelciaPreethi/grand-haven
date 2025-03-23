@@ -19,6 +19,11 @@
   background-color: #0097b2;
   display: flex;
   flex-direction: column;
+
+  &__link {
+    align-self: center;
+  }
+
   &__logo {
     height: 5rem;
     width: 6rem;
