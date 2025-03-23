@@ -2,6 +2,9 @@
   padding: 0.5rem;
   background-color: antiquewhite;
   margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .image {
@@ -38,7 +41,7 @@
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  z-index: 1;
+  // z-index: 1;
   border-radius: 50%;
 }
 
@@ -52,4 +55,33 @@
 
 .nav-btn:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.amenities {
+  list-style-type: none;
+  display: flex;
+
+  &__item {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 0.5px solid black;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__hr {
+    height: 100%;
+  }
+}
+
+.select {
+  &__link {
+    text-decoration: none;
+  }
+  &__button {
+    padding: 0.5rem;
+    background-color: #0097b2;
+    width: 6.25rem;
+    text-align: center;
+  }
 }
