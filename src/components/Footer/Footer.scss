@@ -1,0 +1,13 @@
+.footer {
+  background-color: #0097b2;
+  color: beige;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+
+  &-article {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+}
