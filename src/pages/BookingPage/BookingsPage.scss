@@ -1,4 +1,10 @@
-.available__data {
-  display: flex;
-  flex-wrap: wrap;
+.available {
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__header {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
