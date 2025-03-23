@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 // Required for screen readers (accessibility)
 Modal.setAppElement("#root");
 
-function Bookings({ date, setDate, guestCount, setGuestCount }) {
+function Bookings({ date, setDate, guestCount, setGuestCount, buttonName }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (event) => {
@@ -22,7 +22,7 @@ function Bookings({ date, setDate, guestCount, setGuestCount }) {
   return (
     <div className={`delete ${isOpen ? "blurred" : ""}`}>
       <div onClick={() => setIsOpen(true)} className="open-modal">
-        Bookings
+        {buttonName}
       </div>
 
       <Modal
