@@ -23,7 +23,7 @@ function Footer() {
       </article>
       <article className="footer-article">
         <h2 className="article__title">Stay With US</h2>
-        <Link to="/booking">
+        <Link to="/booking" className="booking-button">
           <p>Get the Best Room Rate</p>
         </Link>
       </article>

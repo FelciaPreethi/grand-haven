@@ -6,13 +6,13 @@ function HomePage() {
       <section className="hero-banner">
         <div className="hero-banner__overlay"></div>
         <div className="hero-banner__text">
-          <h2>Welcome to</h2>
-          <h1>GRAND HAVEN</h1>
+          <h2 className="hero-title__sub">Welcome to</h2>
+          <h1 className="hero-title">GRAND HAVEN</h1>
         </div>
       </section>
       <section className="intro">
         <article className="intro__content">
-          <h2>Welcome to your home away from home</h2>
+          <h2 className="intro__title">Welcome to your home away from home</h2>
           <p className="intro__details">
             Escape to our serene beach hotel, where the soothing waves and warm
             hospitality create a home away from home. Relax in cozy, ocean-view
@@ -32,7 +32,6 @@ function HomePage() {
           <h2 className="comments__title">In the Press</h2>
           <div className="comments__details">
             <article className="comments__item">
-              <p className="comments__item-title">"</p>
               <p className="comments__item-content">
                 A true coastal paradise, offering the perfect blend of luxury
                 and comfort with breathtaking ocean views.
@@ -40,7 +39,6 @@ function HomePage() {
               <p className="comments__item-author"> – Travel Weekly</p>
             </article>
             <article className="comments__item">
-              <p className="comments__item-title">"</p>
               <p className="comments__item-content">
                 The ultimate home away from home—impeccable service, stunning
                 beachfront location, and a warm, welcoming atmosphere.
@@ -51,7 +49,6 @@ function HomePage() {
               </p>
             </article>
             <article className="comments__item">
-              <p className="comments__item-title">"</p>
               <p className="comments__item-title">
                 A hidden gem where the sound of the waves and world-class
                 hospitality create an unforgettable retreat.
