@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./BookingForm.scss";
+import { useNavigate } from "react-router-dom";
 
 const BookingForm = ({ setReservationDetails }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     prefix: "",
     firstName: "",
@@ -32,7 +35,6 @@ const BookingForm = ({ setReservationDetails }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Handle nested object (additionalGuest)
     if (name.startsWith("guest_")) {
       setFormData((prev) => ({
         ...prev,
@@ -52,7 +54,6 @@ const BookingForm = ({ setReservationDetails }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate required fields
     const requiredFields = [
       "firstName",
       "lastName",
@@ -74,8 +75,7 @@ const BookingForm = ({ setReservationDetails }) => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
-      alert("Form submitted successfully!");
+      navigate("/");
       setReservationDetails(formData);
     }
   };

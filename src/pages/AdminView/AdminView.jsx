@@ -26,7 +26,6 @@ function AdminView() {
     });
     setBookingData(data);
     setFilteredData(data);
-    console.log(response);
   }
 
   useEffect(() => {

@@ -36,7 +36,6 @@ function BookingPage({
       requestObj
     );
     setRoomsData(response.data);
-    console.log(response.data);
   }
 
   useEffect(() => {

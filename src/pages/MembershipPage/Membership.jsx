@@ -28,7 +28,6 @@ function MembershipPage({ setIsLoggedIn, setSelectedPage }) {
   }
 
   async function handleCancelBooking(details) {
-    console.log(details);
     const response = await axios.delete(backendurl + "/user/cancelbooking/", {
       data: { booking_id: details.booking_id },
     });

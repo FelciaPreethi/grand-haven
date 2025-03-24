@@ -20,9 +20,6 @@ function AdminLogin() {
         password: password,
       });
       if (response.status === 200) {
-        console.log(response);
-
-        alert("Login successful");
         navigate("/admin/viewdetails");
       } else {
         alert("Please try again");

@@ -23,7 +23,6 @@ function LoginPage({ setIsLoggedIn, setSelectedPage }) {
         password: password,
       });
       if (response.status === 200) {
-        console.log(response);
         localStorage.setItem("jwtToken", response.data.token);
         localStorage.setItem("Username", response.data.username);
         localStorage.setItem("email", response.data.email);
