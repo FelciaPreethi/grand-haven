@@ -11,7 +11,9 @@ Grand Haven is a luxury hotel, a place to unwind and relax. Book now through our
 - Guest
   - Have a hassle free hotel booking
 - admin
-- Maintain bookings and reservations with ease.
+  - Maintain bookings and reservations with ease.
+- user
+  - Logs in and look at the booking history.
 
 ### Features
 
@@ -20,9 +22,8 @@ Grand Haven is a luxury hotel, a place to unwind and relax. Book now through our
 - As a user, I want to check the availability for the date I'm looking for.
 
 - As a logged in user, I want to be able to create an account to view/review my bookings.
-- As a logged in user, I want to leave comments after my stay.
 
-- As an admin user, I want to look at the rooms booked and available.
+- As an admin user, I want to look at the rooms booked and available.(Admin cannot signup for now. Admin login can be found at /admin/login/  username:admin4@example.com, password: admin1 )
 - As an admin user, I need the details of the users that will occupy the rooms for verification.
 
 ## Implementation
@@ -39,22 +40,20 @@ Grand Haven is a luxury hotel, a place to unwind and relax. Book now through our
 - Server libraries:
   - knex
   - express
-  - bcrypt for password hashing
 
 ### APIs
 
-- No external APIs will be used for the first sprint
+- No external APIs will be used for the this.
 
 ### Sitemap
 
 - Home page
-- room-suites
-- individual room type
-- availability
+- Bookings page
 - booking registration
-- admin - login and signup
-- guest - login and signup
-- admin - update room info
+- user - login and signup
+- user - view their past/upcoming reservations.
+- admin - login
+- admin - view reservations for all rooms.
 
 ### Mockups
 
@@ -88,87 +87,95 @@ Grand Haven is a luxury hotel, a place to unwind and relax. Book now through our
 
 ### Endpoints
 
-**GET /rooms**
+**POST /guest/checkavailability**
 
 - Gives the list of room types with details
+  
+Parameters:
+
+- inDate: check in date
+- outDate: checkout date
+- guestcount: Number of guests.
 
 Response:
 
 ```
 [
     {
-        "id": 1,
-        "type": "Studio suite",
-        "Bedroom": 1,
-        "Wifi": "available",
-        "occupancy": 2
+        "type_id": 1,
+        "type_name": "Studio suite",
+        "description": "Comfortable and functional",
+        "price_per_night": "100.00",
+        "guest_count": 2,
+        "pictures": [
+            "/rooms/suite/balcony.jpeg",
+            "/rooms/suite/Bathroom.jpeg",
+            "/rooms/suite/LivingArea.jpg",
+            "/rooms/suite/rooftop.jpeg",
+            "/rooms/suite/View.jpeg"
+        ],
+        "bedrooms": 1,
+        "queen": 1,
+        "king": 0,
+        "full_bath": 1,
+        "three_quarter_bath": 0,
+        "wifi": 1,
+        "stove": 0,
+        "fridge": 1,
+        "microwave": 1,
+        "full_kitchen": 0,
+        "kitchenette": 1
     },
-    ...
 ]
 ```
 
-**GET /rooms/room-type**
+**POST /guest/bookrooms**
 
-- availability and room type details
+- For booking the selected room
 
 Parameters:
 
-- id: type id as number
+- inDate: check in date
+- outDate: checkout date
+- details: Guest details
+- roomtype: Type of room chosen by the user
 
 Response:
 
 ```
 {
-
-        "id": 1,
-        "type": "Studio suite",
-        "Bedroom": 1,
-        "Wifi": "available",
-        "occupancy": 2
-        "available_date": [array of dates available]
+    "message": "Successful booking",
+    "details": {
+        "room_id": 1,
+        "type_id": 1,
+        "room_number": "101",
+        "status": "Available",
+        
+    }
 }
 ```
 
-**POST /user/:id/comment**
+**POST /user/signup**
 
-- Logged in user can add comment
+- Signup an user
 
 Parameters:
 
-- id: userid
-- token: JWT of the logged in user
-- comment: User provided comment.
+- username: User provided username
+- email: email
+- password: password
 
 Response:
 
 ```
-{
-    "id": 1,
-    "name": "Username",
-    "comment": User provided comment
-}
-```
-
-**POST /users/register**
-
-- Add a user account
-
-Parameters:
-
-- email: User's email
-- password: User's provided password
-
-Response:
-
-```
-{
-    "token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
+{ 
+    status: 201
 }
 ```
 
 **POST /users/login**
 
-- Login a user
+- Login an existing user
 
 Parameters:
 
@@ -179,35 +186,18 @@ Response:
 
 ```
 {
-    "token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlMgU25hcGUiLCJpYXQiOjE3NDI4MDEwODAsImV4cCI6MTc0MjgwNDY4MH0.AdF2T25GN8UYl_jpFX6hpmMHfp-DJDuZtDt3jYwK57M",
 }
 ```
 
-**POST /admin/users/register**
-
-- Add an admin user account
-
-Parameters:
-
-- email: User's email
-- password: User's provided password
-
-Response:
-
-```
-{
-    "token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
-}
-```
-
-**POST /admin/users/login**
+**POST /admin/login**
 
 - Login an admin user
 
 Parameters:
 
-- email: User's email
-- password: User's provided password
+- email: Admin's email
+- password: Admin's provided password
 
 Response:
 
@@ -217,30 +207,89 @@ Response:
 }
 ```
 
-**GET /admin/room/**
+**POST /user/getbookingdetails**
+
+- Get the booking details of an user
+
+Parameters:
+
+- email: User's email (taken from session storage)
+
+Response:
+
+```
+{
+    [
+    {
+        "Arrival": "Mon Mar 24 2025",
+        "Departure": "Wed Mar 26 2025",
+        "Nights": 3,
+        "Booked On": "Mon Mar 24 2025",
+        "Room Type": "One-bedroom rooftop suite",
+        "booking_id": 23
+    }
+]
+}
+```
+
+**DELETE /user/cancelbooking**
+
+- Delete an user's upcoming booking
+
+Parameters:
+
+- booking_id
+
+Response:
+
+```
+{
+    status: 204
+}
+```
+
+**GET /admin/view/**
 
 - Get the details of the rooms that are booked and available
 
 Response:
 
 ```
-{
-    "roomnumber" : 201,
-    "roomtype" : "One bedroom suite",
-    "status" : "Booked/Vacant",
-    "Dates available" : [List of dates available]
-}
+[
+    {
+        "booking_id": 10,
+        "room_id": 901,
+        "check_in_date": "2025-03-21T07:00:00.000Z",
+        "check_out_date": "2025-03-21T07:00:00.000Z",
+        "total_price": "2000.00",
+        "status": "Confirmed",
+        "email": "rweasley@gmail.com",
+        "details": {
+            "zip": "V9L 0A6",
+            "city": "Duncan",
+            "email": "rweasley@gmail.com",
+            "phone": "2507101263",
+            "state": "British Columbia",
+            "prefix": "",
+            "country": "Canada",
+            "address1": "6258 Selkirk Terrace",
+            "address2": "",
+            "language": "",
+            "lastName": "Lansingh Danie",
+            "firstName": "Felcia Preethi",
+            "additionalGuest": {
+                "lastName": "",
+                "firstName": ""
+            }
+        },
+        "type_id": 2,
+        "created_at": "2025-03-21T07:04:24.000Z",
+        "updated_at": "2025-03-21T07:04:24.000Z",
+        "type_name": "One-bedroom rooftop suite"
+    },
+]
 ```
 
-**POST /admin/room/**
-
-- Add new room to the inventory
-
-Parameters:
-
-- roomtype
-- roomtype
-- room details
 
 ### Auth
 
@@ -268,22 +317,11 @@ Parameters:
 
 - Deploy client and server projects so all commits will be reflected in production
 
-- Feature: List the rooms that are currently available for booking
+- Feature: BookingsPage
 
-  - Implement a filter that filters the room types based on criteria
-  - Create GET /rooms endpoint
-
-- Feature: Single room
-
-  - Implement single room page which has the details of the feature available.
-  - Create GET /room/:roomtype
-  - Display the dates available for booking.
-
-- Feature: Book room
-
-  - Add form input to get details from the user.
-  - Create POST /bookingdetails
-  - Store the details and update the inventory.
+  - Get inputs as date from calendar
+  - Create POST /checkavailability
+  - Display to the user.
 
 - Feature: Home page
 
@@ -297,10 +335,14 @@ Parameters:
   - Implement login page + form
   - Create POST /users/login endpoint
 
-- Feature: Post comments
+- Feature: Show user's booking history
 
-  - Add form so the user can post comments
-    -Create POST /user/comment endpoint
+  - Once the user logs in successfully, show their booking history.
+  
+- Feature: Show the rooms that are booked for admin
+
+  - Once an admin logs in successfully, they can look at the rooms that are booked.
+  - Implement filter option to filter based on the rooms, email, etc.
 
 - Feature: Implement JWT tokens
 
