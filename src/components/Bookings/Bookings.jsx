@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import "./Bookings.scss";
 import Calendar from "react-calendar";
@@ -21,7 +20,10 @@ function Bookings({ date, setDate, guestCount, setGuestCount, buttonName }) {
 
   return (
     <div className={`delete ${isOpen ? "blurred" : ""}`}>
-      <div onClick={() => setIsOpen(true)} className="open-modal">
+      <div
+        onClick={() => setIsOpen(true)}
+        className={`open-modal ${buttonName}-button`}
+      >
         {buttonName}
       </div>
 

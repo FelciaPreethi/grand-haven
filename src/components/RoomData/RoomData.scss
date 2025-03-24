@@ -1,20 +1,41 @@
+@use "/src/partials/mixins" as *;
+
 .room-info {
   padding: 0.5rem;
   background-color: antiquewhite;
-  margin: 0.5rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 95vw;
+  margin-bottom: 2rem;
+
+  border-radius: 5px;
+
+  @include tablet {
+    width: 35rem;
+    padding: 1.5rem;
+  }
+
+  &:hover {
+    box-shadow: 8px 9px 14px 1px rgba(0, 0, 0, 0.74);
+  }
 }
 
 .image {
-  width: 31.25rem;
+  width: 90vw;
   height: 20rem;
   display: block;
   border: 5px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+
+  @include tablet {
+    width: 31.25rem;
+    height: 20rem;
+    margin-inline: auto;
+  }
 
   &-container {
     position: relative;
@@ -60,6 +81,8 @@
 .amenities {
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 
   &__item {
     padding: 0.5rem;
@@ -78,10 +101,20 @@
   &__link {
     text-decoration: none;
   }
+
   &__button {
-    padding: 0.5rem;
     background-color: #0097b2;
-    width: 6.25rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: black;
+    width: 5rem;
     text-align: center;
+
+    &:hover,
+    :active {
+      background-color: #02424e;
+      color: white;
+    }
   }
 }

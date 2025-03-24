@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../LoginPage/LoginPage.scss";
 
-function SignupPage() {
+function SignupPage({ setSelectedPage }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const backendurl = "http://localhost:8080";
+
+  useEffect(() => {
+    setSelectedPage("Membership");
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();

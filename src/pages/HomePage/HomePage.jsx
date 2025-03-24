@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import "./HomePage.scss";
 
-function HomePage() {
+function HomePage({ setSelectedPage }) {
+  useEffect(() => {
+    setSelectedPage("Home");
+  });
+
   return (
     <main>
       <section className="hero-banner">

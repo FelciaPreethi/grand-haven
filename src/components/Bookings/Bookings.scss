@@ -1,6 +1,8 @@
+@use "/src/partials/mixins" as *;
+
 .overlay {
   position: fixed;
-  top: -12rem;
+  top: -3rem;
   left: 0;
   right: 0;
   bottom: 0;
@@ -8,6 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include tablet {
+    top: -5rem;
+  }
 }
 
 .close__icon {
@@ -17,25 +23,37 @@
 }
 
 .bookings {
+  &__title {
+    font-size: 1.125rem;
+  }
+
   &__modal {
     padding: 1rem;
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+    font-size: 0.75rem;
+    width: 80%;
+
+    @include tablet {
+      width: fit-content;
+    }
   }
 
   &-input {
     background-color: rgb(219, 224, 234);
-    padding: 0.25rem;
+    padding: 1rem;
 
     &__title {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
+      padding-bottom: 1rem;
     }
 
     &__guests {
       width: 2.5rem;
       height: 1.5rem;
+      text-align: center;
     }
 
     &__button {
@@ -70,4 +88,17 @@
   padding: 20px;
   width: 300px; /* Adjust as needed */
   margin: 50px auto;
+}
+
+.change-button {
+  background-color: #0097b2;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+
+  &:hover,
+  :active {
+    background-color: #02424e;
+    color: white;
+  }
 }

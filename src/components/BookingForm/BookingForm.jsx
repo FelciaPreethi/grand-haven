@@ -20,6 +20,12 @@ const BookingForm = ({ setReservationDetails }) => {
       lastName: "",
     },
   });
+  const [showGuestFields, setShowGuestFields] = useState(false);
+  const [guestCount, getGuestCount] = useState(0);
+
+  const handleAddGuestField = () => {
+    setShowGuestFields(true);
+  };
 
   const [errors, setErrors] = useState({});
 
@@ -86,7 +92,6 @@ const BookingForm = ({ setReservationDetails }) => {
           className="form__input input__prefix"
         />
       </div>
-
       {[
         { label: "First Name", name: "firstName" },
         { label: "Last Name", name: "lastName" },
@@ -112,7 +117,6 @@ const BookingForm = ({ setReservationDetails }) => {
           {errors[name] && <span className="error">{errors[name]}</span>}
         </div>
       ))}
-
       <div>
         <label className="form__label">Language:</label>
         <input
@@ -123,30 +127,40 @@ const BookingForm = ({ setReservationDetails }) => {
           className="form__input"
         />
       </div>
-      {/* Additional Guest */}
-      <h3>Additional Guest 1</h3>
-      <label className="form__label">First Name:</label>
-      <input
-        type="text"
-        name="guest_firstName"
-        value={formData.additionalGuest.firstName}
-        onChange={handleChange}
-        className="form__input"
-      />
+      <div>
+        {showGuestFields && (
+          <div className="guest-section">
+            <h3>Additional Guest {guestCount + 1}</h3>
+            <label className="form__label">First Name:</label>
+            <input
+              type="text"
+              name={"guest_" + guestCount + "_firstName"}
+              value={("guest_" + guestCount + "_firstname").firstName}
+              onChange={(e) => handleChange(e)}
+              className={"form__input input__firstName"}
+            />
 
-      <label className="form__label">Last Name:</label>
-      <input
-        type="text"
-        name="guest_lastName"
-        value={formData.additionalGuest.lastName}
-        onChange={handleChange}
-        className="form__input"
-      />
-
-      {/* Submit Button */}
-      <button className="form__button" type="submit">
-        Submit
-      </button>
+            <label className="form__label">Last Name:</label>
+            <input
+              type="text"
+              name={"guest_" + guestCount + "_lastName"}
+              value={("guest_" + guestCount + "_firstName").lastName}
+              onChange={(e) => handleChange(e)}
+              className={"form__input input__lastname"}
+            />
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleAddGuestField}
+          className="guest-btn"
+        >
+          + Add Guest
+        </button>
+        <button className="form__button" type="submit">
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

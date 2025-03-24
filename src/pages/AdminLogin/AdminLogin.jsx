@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import "../LoginPage/LoginPage.scss";
-import { Link, useNavigate } from "react-router-dom";
+import "../SignupPage/SignupPage.scss";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function AdminLogin() {
@@ -33,28 +34,34 @@ function AdminLogin() {
   }
 
   return (
-    <main>
+    <main className="loginpage">
       <form className="loginform" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="EMAIL"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-          value={email}
-          className="loginform__input"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="PASSWORD"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-          value={password}
-          className="loginform__input"
-        />
+        <div class="input-group">
+          <label htmlFor="email" class="input-group__label">
+            EMAIL
+          </label>
+          <input
+            type="email"
+            name="email"
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+            value={email}
+            className="input-group__input"
+          />
+        </div>
+        <div className="input-group">
+          <label className="input-group__label">PASSWORD</label>
+          <input
+            type="password"
+            name="password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+            value={password}
+            className="input-group__input"
+          />
+        </div>
         <button type="submit" className="loginform__button">
           LOG IN
         </button>

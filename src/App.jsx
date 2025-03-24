@@ -16,6 +16,7 @@ function App() {
   const [date, setDate] = useState();
   const [bookingDetails, setBookingDetails] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedPage, setSelectedPage] = useState("Home");
 
   return (
     <>
@@ -26,25 +27,34 @@ function App() {
           guestCount={guestCount}
           setGuestCount={setGuestCount}
           isLoggedIn={isLoggedIn}
+          selectedPage={selectedPage}
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={<HomePage setSelectedPage={setSelectedPage} />}
+          />
           <Route
             path="/user/login"
             element={
               <LoginPage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
+                setSelectedPage={setSelectedPage}
               />
             }
           />
-          <Route path="/user/signup" element={<SignupPage />} />
+          <Route
+            path="/user/signup"
+            element={<SignupPage setSelectedPage={setSelectedPage} />}
+          />
           <Route
             path="/membership"
             element={
               <MembershipPage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
+                setSelectedPage={setSelectedPage}
               />
             }
           />
@@ -57,6 +67,7 @@ function App() {
                 guestCount={guestCount}
                 setGuestCount={setGuestCount}
                 setBookingDetails={setBookingDetails}
+                setSelectedPage={setSelectedPage}
               />
             }
           />
@@ -67,11 +78,20 @@ function App() {
                 date={date}
                 guestCount={guestCount}
                 bookingDetails={bookingDetails}
+                setSelectedPage={setSelectedPage}
               />
             }
           />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/viewdetails" element={<AdminView />} />
+          <Route
+            path="/admin/login"
+            element={<AdminLogin />}
+            setSelectedPage={setSelectedPage}
+          />
+          <Route
+            path="/admin/viewdetails"
+            element={<AdminView />}
+            setSelectedPage={setSelectedPage}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
