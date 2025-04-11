@@ -5,6 +5,7 @@ import "./RoomData.scss";
 function RoomData({ roomdata, setSelectedRoom }) {
   const navigate = useNavigate();
 
+  console.log(roomdata);
   const backendurl = import.meta.env.VITE_BACKEND_URL;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -131,7 +132,7 @@ function RoomData({ roomdata, setSelectedRoom }) {
           <hr className="amenities_hr" />
           <span>{roomdata.bedrooms}</span>
         </li>
-        {!roomdata.king ? (
+        {roomdata.king !== 0 ? (
           <li className="amenities__item">
             <svg
               fill="#000000"
@@ -149,7 +150,7 @@ function RoomData({ roomdata, setSelectedRoom }) {
         ) : (
           ""
         )}
-        {!roomdata.queen ? (
+        {roomdata.queen !== 0 ? (
           <li className="amenities__item">
             <svg
               fill="#000000"
@@ -168,7 +169,7 @@ function RoomData({ roomdata, setSelectedRoom }) {
           ""
         )}
 
-        {!roomdata.full_bath ? (
+        {roomdata.full_bath !== 0 ? (
           <li className="amenities__item">
             <svg
               fill="#000000"
@@ -214,7 +215,7 @@ function RoomData({ roomdata, setSelectedRoom }) {
         ) : (
           ""
         )}
-        {!roomdata.three_quarter_bath ? (
+        {roomdata.three_quarter_bath !== 0 ? (
           <li className="amenities__item">
             <svg
               fill="#000000"
