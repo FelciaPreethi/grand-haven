@@ -14,7 +14,7 @@ function Header({
     <header className="header">
       <Link className="header__link" to="/">
         <img
-          src="/src/assets/logo/hotel-logo.jpg"
+          src="../../assets/logo/hotel-logo.jpg"
           alt="Logo"
           className="header__logo"
         ></img>

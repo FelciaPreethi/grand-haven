@@ -26,7 +26,7 @@ function HomePage({ setSelectedPage }) {
           </p>
         </article>
         <img
-          src="/src/assets/images/lounge.jpg"
+          src="../../assets/images/lounge.jpg"
           alt="Beach lounge area"
           className="intro__image"
         />
