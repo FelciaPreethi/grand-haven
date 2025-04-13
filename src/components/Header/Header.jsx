@@ -1,6 +1,7 @@
 import Bookings from "../Bookings/Bookings";
 import "./Header.scss";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo/hotel-logo.jpg";
 
 function Header({
   date,
@@ -13,11 +14,7 @@ function Header({
   return (
     <header className="header">
       <Link className="header__link" to="/">
-        <img
-          src="../../assets/logo/hotel-logo.jpg"
-          alt="Logo"
-          className="header__logo"
-        ></img>
+        <img src={logo} alt="Logo" className="header__logo"></img>
       </Link>
 
       <nav className="header__nav">

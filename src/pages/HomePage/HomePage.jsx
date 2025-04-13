@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./HomePage.scss";
+import lounge from "../../assets/images/lounge.jpg";
 
 function HomePage({ setSelectedPage }) {
   useEffect(() => {
@@ -25,11 +26,7 @@ function HomePage({ setSelectedPage }) {
             seaside view.
           </p>
         </article>
-        <img
-          src="../../assets/images/lounge.jpg"
-          alt="Beach lounge area"
-          className="intro__image"
-        />
+        <img src={lounge} alt="Beach lounge area" className="intro__image" />
       </section>
       <section className="comments">
         <div class="comments__overlay"></div>
