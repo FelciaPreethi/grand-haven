@@ -9,7 +9,7 @@ function SignupPage({ setSelectedPage }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const backendurl = "http://localhost:8080";
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     setSelectedPage("Membership");

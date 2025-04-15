@@ -7,7 +7,7 @@ import axios from "axios";
 function LoginPage({ setIsLoggedIn, setSelectedPage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const backendurl = "http://localhost:8080";
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
 
   useEffect(() => {

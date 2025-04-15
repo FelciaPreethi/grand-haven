@@ -4,7 +4,7 @@ import "./AdminView.scss";
 import * as utils from "../../utils/utils.js";
 
 function AdminView() {
-  const backendurl = "http://localhost:8080";
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const [bookingData, setBookingData] = useState(null);
   const [filteredData, setFilteredData] = useState(null);
   const [selectedBooking, setSelectedBooking] = useState(null);

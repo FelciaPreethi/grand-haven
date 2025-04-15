@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../../components/LogOutModal/LogOutModal.jsx";
 
 function MembershipPage({ setIsLoggedIn, setSelectedPage }) {
-  const backendurl = "http://localhost:8080";
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const token = localStorage.getItem("token");
   const [bookingDetails, setBookingDetails] = useState(null);
   const [rerender, setRerender] = useState(false);

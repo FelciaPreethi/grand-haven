@@ -4,8 +4,6 @@ import "./RoomData.scss";
 
 function RoomData({ roomdata, setSelectedRoom }) {
   const navigate = useNavigate();
-
-  console.log(roomdata);
   const backendurl = import.meta.env.VITE_BACKEND_URL;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
