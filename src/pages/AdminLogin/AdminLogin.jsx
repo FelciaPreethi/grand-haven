@@ -8,7 +8,7 @@ import axios from "axios";
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const backendurl = "http://:8080";
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
